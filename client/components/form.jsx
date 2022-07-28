@@ -11,7 +11,7 @@ const Form = () => {
     event.preventDefault();
     try {
       const body = { name, phoneNumber, barberName };
-      // eslint-disable-next-line
+      //  eslint-disable-next-line
       const response = await fetch('http://localhost:3000/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+//
 const Waitlist = () => {
 
   const [waitlist, setWaitlist] = useState([]);
