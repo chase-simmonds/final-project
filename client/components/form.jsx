@@ -25,7 +25,6 @@ const Form = () => {
 
   return (
     <>
-      <h2 className='text-center'>Get in line!</h2>
       <form className='d-flex flex-column col-sm-4 offset-sm-4'>
         <label>Name
           <input type="text" className='form-control' value={name}
