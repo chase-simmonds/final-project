@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import Home from './pages/home';
 import Form from './components/form';
 import Waitlist from './components/waitlist';
-//  import ModalForm from './components/modal-form';
+// import ModalForm from './components/modal-form';
 import Modal from 'react-bootstrap/Modal';
 // import Button from 'react-bootstrap/Button';
 
