@@ -32,14 +32,3 @@ function ModalForm({ closeModal }) {
 }
 
 export default ModalForm;
-
-/* <div className="modal-background">
-      <div className="modal-container">
-        <div className="modal-close-button">
-          <i id="exit-btn" className="fa-solid fa-circle-xmark" onClick={() => closeModal(false)} ></i>
-        </div>
-        <div className="body">
-          <Form />
-        </div>
-      </div>
-    </div> */

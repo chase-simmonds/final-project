@@ -9,37 +9,6 @@
   justify-content: center;
 }
 
-#exit-btn {
-  font-size: 2rem;
-  color: #ff0f01;
-}
-
-.modal-close-button {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.modal-background {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(76, 75, 75, 0.673);
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-container {
-  width: 500px;
-  height: 500px;
-  border-radius: 5px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
-  display: flex;
-  flex-direction: column;
-  padding: 25px;
-}
-
 .waitlist {
   padding-top: 2rem;
 }
