@@ -12,12 +12,11 @@ const Form = () => {
     try {
       const body = { name, phoneNumber, barberName };
       // eslint-disable-next-line
-      const response = await fetch('http://localhost:3000/api/waitlist', {
+      const response = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
       });
-      window.location = '/';
     } catch (err) {
       console.error(err.message);
     }
