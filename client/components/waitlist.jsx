@@ -19,7 +19,9 @@ const Waitlist = props => {
           {props.data.map(waitlist => (
             <tr key={waitlist.postId}>
               <td>{waitlist.name}</td>
-              <td>{waitlist.phoneNumber}</td>
+              <td>
+                {waitlist.phoneNumber}
+              </td>
               <td>{waitlist.barberName}</td>
             </tr>
           ))}
