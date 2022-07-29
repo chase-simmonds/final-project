@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const Form = () => {
+const Form = props => {
 
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -11,12 +11,13 @@ const Form = () => {
     event.preventDefault();
     try {
       const body = { name, phoneNumber, barberName };
-      // eslint-disable-next-line
       const response = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
       });
+      const customer = await response.json();
+      props.onSubmit(customer);
     } catch (err) {
       console.error(err.message);
     }

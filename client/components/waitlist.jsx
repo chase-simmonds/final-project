@@ -1,25 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Waitlist = () => {
-
-  const [waitlist, setWaitlist] = useState([]);
-
-  const getWaitlist = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/api/waitlist');
-      const waitlistData = await response.json();
-
-      setWaitlist(waitlistData);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  useEffect(() => {
-    getWaitlist();
-  }, []);
+const Waitlist = props => {
 
   return (
     <div className='waitlist'>
@@ -33,7 +16,7 @@ const Waitlist = () => {
           </tr>
         </thead>
         <tbody>
-          {waitlist.map(waitlist => (
+          {props.data.map(waitlist => (
             <tr key={waitlist.postId}>
               <td>{waitlist.name}</td>
               <td>{waitlist.phoneNumber}</td>
