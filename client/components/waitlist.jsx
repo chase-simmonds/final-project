@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Waitlist = props => {
 
   return (
-    <div className='waitlist'>
+    <div className='container'>
       <h1 className='text-center'>Waitlist</h1>
       <table className='table mt-5 text-center'>
         <thead>

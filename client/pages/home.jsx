@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Form from '../components/form';
 import Waitlist from '../components/waitlist';
 import Modal from 'react-bootstrap/Modal';
+import Navboi from '../components/navbar';
 
 export default function Home() {
   const [show, setShow] = useState(false);
@@ -32,6 +33,7 @@ export default function Home() {
 
   return (
     <>
+      <Navboi />
       <Waitlist data={waitlist} />
       <div className="add-button">
         <i id="add-btn" className="fa-solid fa-circle-plus" onClick={handleShow}>
