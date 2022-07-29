@@ -1,0 +1,14 @@
+#add-btn {
+  font-size: 5rem;
+  color: #198653;
+  padding-top: 1rem;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+}
+
+.waitlist {
+  padding-top: 2rem;
+}
