@@ -2,7 +2,6 @@ require('dotenv/config');
 const path = require('path');
 const pg = require('pg');
 const express = require('express');
-// const ClientError = require('./client-error');
 const errorMiddleware = require('./error-middleware');
 
 const db = new pg.Pool({

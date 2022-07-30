@@ -36,7 +36,7 @@ export default function Home() {
       <Navboi />
       <Waitlist data={waitlist} />
       <div className="add-button">
-        <i id="add-btn" className="fa-solid fa-circle-plus" onClick={handleShow}>
+        <i id="add-btn" className="fa-solid fa-circle-plus mb-5" onClick={handleShow}>
         </i>
       </div>
 
