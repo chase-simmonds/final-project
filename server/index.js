@@ -1,9 +1,12 @@
 require('dotenv/config');
 const path = require('path');
 const pg = require('pg');
+// const argon2 = require('argon2');
 const express = require('express');
+// const jwt = require('jsonwebtoken');
 // const ClientError = require('./client-error');
 const errorMiddleware = require('./error-middleware');
+// const authorizationMiddleware = require('./authorization-middleware');
 
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
@@ -69,6 +72,8 @@ app.post('/api/waitlist', (req, res) => {
       });
     });
 });
+
+// app.use(authorizationMiddleware);
 
 app.listen(process.env.PORT, () => {
   process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
