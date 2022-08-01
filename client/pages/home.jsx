@@ -3,6 +3,7 @@ import Form from '../components/form';
 import Waitlist from '../components/waitlist';
 import Modal from 'react-bootstrap/Modal';
 import Navboi from '../components/navbar';
+import Button from 'react-bootstrap/Button';
 
 export default function Home() {
   const [show, setShow] = useState(false);
@@ -31,13 +32,29 @@ export default function Home() {
     getWaitlist();
   }, []);
 
+  const toggleCompleted = async (postId, isCompleted) => {
+    try {
+      await fetch(`/api/waitlist/${postId}`, {
+        body: JSON.stringify({ isCompleted }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'PATCH'
+      });
+      await getWaitlist();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
-      <Navboi />
-      <Waitlist data={waitlist} />
+      <Navboi joinWaitlistClick={handleShow}/>
+      <Waitlist data={waitlist} toggleCompleted={toggleCompleted} />
       <div className="add-button">
-        <i id="add-btn" className="fa-solid fa-circle-plus mb-5" onClick={handleShow}>
-        </i>
+        <Button className='mt-3 mb-5' size='lg' variant='success' onClick={handleShow}>
+          Join Waitlist
+        </Button>
       </div>
 
       <Modal className="mt-5" show={show} onHide={handleClose}>
