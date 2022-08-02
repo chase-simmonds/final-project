@@ -16,7 +16,7 @@ const Waitlist = props => {
 
   return (
     <>
-      <h1 className='text-center mt-4'>Waitlist</h1>
+      <h1 className='fw-bold text-center mt-4'>Waitlist</h1>
         <div className='container'>
           <table className='table align-middle table-bordered text-center mt-5'>
             <thead className="table-dark">
@@ -24,8 +24,7 @@ const Waitlist = props => {
               <th><i className="fa-solid fa-person"></i></th>
               <th><i className="fa-solid fa-mobile-screen-button"></i></th>
               <th><i className="fa-solid fa-scissors"></i></th>
-              <th><Button size="sm" variant='danger'>
-                Clear <i className="fa-solid fa-circle-check"></i></Button></th>
+              <th><Button size='sm' variant='danger'>Clear <i className="fa-solid fa-circle-check"></i></Button></th>
               </tr>
             </thead>
             <tbody>

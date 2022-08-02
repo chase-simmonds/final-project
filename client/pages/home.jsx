@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <>
-      <Navboi joinWaitlistClick={handleShow}/>
+      <Navboi joinWaitlist={handleShow}/>
       <Waitlist data={waitlist} toggleCompleted={toggleCompleted} />
       <div className="add-button">
         <Button className='mt-3 mb-5' size='lg' variant='success' onClick={handleShow}>

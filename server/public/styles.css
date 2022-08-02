@@ -10,6 +10,7 @@
 .is-completed {
   background-color: rgb(168, 168, 168);
   text-decoration: line-through;
+  color: gray;
 }
 
 .hidden {

@@ -6,12 +6,12 @@ import Button from 'react-bootstrap/Button';
 
 function Navboi(props) {
 
-  const { joinWaitlistClick } = props;
+  const { joinWaitlist } = props;
 
   return (
     <>
       <Navbar bg="dark" variant="dark">
-        <Container className="d-flex justify-content-between">
+        <Container className="d-flex justify-content-space-between">
           <Nav.Link href="">
             <Button size="sm" variant='warning'>Barber Login</Button>
           </Nav.Link>
@@ -26,7 +26,7 @@ function Navboi(props) {
           </Navbar.Brand>
           <Nav>
             <Nav.Link href="">
-              <Button size="sm" variant='success' onClick={joinWaitlistClick}>Join Waitlist</Button>
+              <Button size="sm" variant='success' onClick={joinWaitlist}>Join Waitlist</Button>
             </Nav.Link>
           </Nav>
         </Container>
