@@ -33,7 +33,7 @@ const Waitlist = props => {
                   <td>{name}</td>
                   <td>{formatPhoneNumber(phoneNumber)}
                     <a href={`tel:${phoneNumber}`}>
-                      <i className="fa-solid fa-phone ps-2 fs-6 text-success"></i>
+                      <i className={isCompleted ? 'fa-solid fa-phone ps-2 fs-6 text-secondary' : 'fa-solid fa-phone ps-2 fs-6 text-success'}></i>
                     </a>
                   </td>
                   <td>{barberName}</td>
