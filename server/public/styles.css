@@ -16,3 +16,13 @@
 .hidden {
   display: none !important;
 }
+
+.any-barber {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.proper-name {
+  text-transform: capitalize;
+}

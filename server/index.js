@@ -110,6 +110,32 @@ app.patch('/api/waitlist/:postId', (req, res) => {
     });
 });
 
+app.delete('/api/waitlist/:postId', (req, res) => {
+  const postId = Number(req.params.postId);
+  if (!Number.isInteger(postId) || postId <= 0) {
+    res.status(400).json({ error: 'Client ID must be a positive number' });
+  }
+  const sql = `
+  delete from "posts"
+  where "postId" = $1
+  returning *
+  `;
+
+  const params = [postId];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rows[0]) {
+        res.status(404).json({ error: `Record at ${postId} does not exist` });
+      } else {
+        res.status(204).send();
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).json({ error: 'An unexpected error occurred' });
+    });
+});
+
 app.listen(process.env.PORT, () => {
   process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
 });

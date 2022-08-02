@@ -47,10 +47,25 @@ export default function Home() {
     }
   };
 
+  const deleteClient = async postId => {
+    try {
+      await fetch(`/api/waitlist/${postId}`, {
+        body: JSON.stringify({ postId }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'DELETE'
+      });
+      await getWaitlist();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
       <Navboi joinWaitlist={handleShow}/>
-      <Waitlist data={waitlist} toggleCompleted={toggleCompleted} />
+      <Waitlist data={waitlist} toggleCompleted={toggleCompleted} deleteClient={deleteClient}/>
       <div className="add-button">
         <Button className='mt-3 mb-5' size='lg' variant='success' onClick={handleShow}>
           Join Waitlist
