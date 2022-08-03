@@ -27,15 +27,15 @@ const Form = props => {
     <>
       <form className='d-flex flex-column col-sm-4 offset-sm-4'>
         <label>Name
-          <input type="text" className='form-control' value={name}
+          <input type="text" className='form-control' placeholder='John' value={name}
             onChange={event => setName(event.target.value)} required/>
         </label>
         <label>Number
-          <input type="text" className='form-control' value={phoneNumber}
+          <input type="text" className='form-control' placeholder='9495551234' value={phoneNumber}
             onChange={event => setPhoneNumber(event.target.value)} required/>
         </label>
         <label>Barber Name or Any
-          <input type="text" className='form-control' value={barberName}
+          <input type="text" className='form-control' placeholder='Any' value={barberName}
             onChange={event => setBarberName(event.target.value)} required/>
         </label>
         <button type="button" className="btn btn-primary mt-3" onClick={submitForm}>Join Waitlist</button>

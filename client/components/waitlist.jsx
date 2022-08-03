@@ -29,7 +29,7 @@ const Waitlist = props => {
                 </tr>
               </thead>
               <tbody>
-              {data.map(({ isCompleted, name, phoneNumber, barberName, postId }) => (
+              {data.map(({ isCompleted, name, phoneNumber, barberName, postId, barberId }) => (
                 <tr className={isCompleted ? 'is-completed' : ''} key={postId}>
                   <td>
                     <Button size='sm' variant={isCompleted ? 'danger' : 'secondary'} onClick={isCompleted ? () => deleteClient(postId) : null}>
@@ -37,14 +37,12 @@ const Waitlist = props => {
                     </Button>
                   </td>
                   <td className='proper-name'>{name}</td>
-                  <td>{formatPhoneNumber(phoneNumber)}
+                  <td className='phone-number'>{formatPhoneNumber(phoneNumber)}
                     <a href={`tel:${phoneNumber}`}>
                       <i className={isCompleted ? 'fa-solid fa-phone ps-2 fs-6 text-secondary' : 'fa-solid fa-phone ps-2 fs-6 text-success'}></i>
                     </a>
                   </td>
-                  <td className={barberName.toUpperCase() === 'ANY' || barberName.toUpperCase() === 'ANY ' ? 'any-barber' : 'proper-name'}>
-                    {barberName}
-                  </td>
+                  <td className={barberName.toUpperCase() === 'ANY' || barberName.toUpperCase() === 'ANY ' ? 'any-barber' : 'proper-name'}>{barberName}</td>
                   <td>
                     <Button size="sm" variant={isCompleted ? 'warning' : 'success'} onClick={() => toggleCompleted(postId, !isCompleted)}>
                       <i className={isCompleted ? 'fa-solid fa-arrow-rotate-left' : 'fa-solid fa-circle-check'}></i>

@@ -6,14 +6,14 @@ import Button from 'react-bootstrap/Button';
 
 function Navboi(props) {
 
-  const { joinWaitlist } = props;
+  const { joinWaitlist, barberLoginModal } = props;
 
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Container className="d-flex justify-content-space-between">
           <Nav.Link href="">
-            <Button size="sm" variant='warning'>Barber Login</Button>
+            <Button size="sm" variant='outline-warning' onClick={barberLoginModal}>Barber Login</Button>
           </Nav.Link>
           <Navbar.Brand href="">
             <img
