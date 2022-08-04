@@ -6,7 +6,7 @@ const LoginForm = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const submitForm = async event => {
+  const submitLoginForm = async event => {
     event.preventDefault();
     try {
       const body = { username, password };
@@ -33,7 +33,7 @@ const LoginForm = props => {
           <input type="password" className='form-control' value={password}
             onChange={event => setPassword(event.target.value)} required />
         </label>
-        <button type="button" className="btn btn-primary mt-3" onClick={submitForm}>Log In</button>
+        <button type="button" className="btn btn-primary mt-3" onClick={submitLoginForm}>Log In</button>
       </form>
     </>
   );
