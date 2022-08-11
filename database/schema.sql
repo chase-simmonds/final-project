@@ -6,18 +6,18 @@ drop schema "public" cascade;
 
 create schema "public";
 
-CREATE TABLE "barber" (
-	"barberId" serial NOT NULL,
-	"username" TEXT NOT NULL,
-	"hashedPassword" TEXT NOT NULL,
-	CONSTRAINT "barber_pk" PRIMARY KEY ("barberId")
-) WITH (
-  OIDS=FALSE
-);
+--CREATE TABLE "barber" (
+	--"barberId" serial NOT NULL,
+	--"username" TEXT NOT NULL,
+	--"hashedPassword" TEXT NOT NULL,
+	--CONSTRAINT "barber_pk" PRIMARY KEY ("barberId")
+--) WITH (
+  --OIDS=FALSE
+--);
 
 CREATE TABLE "posts" (
 	"postId" serial NOT NULL,
-  "barberId" int NOT NULL DEFAULT 1,
+  --"barberId" int NOT NULL DEFAULT 1,
 	"name" TEXT NOT NULL,
 	"phoneNumber" TEXT NOT NULL,
 	"barberName" TEXT NOT NULL,
@@ -28,4 +28,4 @@ CREATE TABLE "posts" (
   OIDS=FALSE
 );
 
-ALTER TABLE "posts" ADD CONSTRAINT "posts_fk0" FOREIGN KEY ("barberId") REFERENCES "barber"("barberId");
+--ALTER TABLE "posts" ADD CONSTRAINT "posts_fk0" FOREIGN KEY ("barberId") REFERENCES "barber"("barberId");
