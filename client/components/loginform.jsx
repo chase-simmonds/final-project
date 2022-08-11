@@ -10,13 +10,13 @@ const LoginForm = props => {
     event.preventDefault();
     try {
       const body = { username, password };
-      const response = await fetch('/api/waitlist', {
+      const response = await fetch('/api/auth/sign-in', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
       });
-      const customer = await response.json();
-      props.onSubmit(customer);
+      const barber = await response.json();
+      props.onSubmit(barber);
     } catch (err) {
       console.error(err.message);
     }

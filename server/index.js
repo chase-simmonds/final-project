@@ -70,6 +70,63 @@ app.post('/api/waitlist', (req, res) => {
     });
 });
 
+app.post('/api/auth/sign-up', (req, res, next) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    throw new ClientError(400, 'username and password are required fields');
+  }
+  argon2
+    .hash(password)
+    .then(hashedPassword => {
+      const sql = `
+        insert into "barber" ("username", "hashedPassword")
+        values ($1, $2)
+        returning "barberId", "username"
+      `;
+      const params = [username, hashedPassword];
+      return db.query(sql, params);
+    })
+    .then(result => {
+      const [user] = result.rows;
+      res.status(201).json(user);
+    })
+    .catch(err => next(err));
+});
+
+app.post('/api/auth/sign-in', (req, res, next) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    throw new ClientError(401, 'invalid login');
+  }
+  const sql = `
+    select "barberId",
+           "hashedPassword"
+      from "barber"
+      where "username" = $1
+  `;
+
+  const params = [username];
+  db.query(sql, params)
+    .then(result => {
+      const [user] = result.rows;
+      if (!user) {
+        throw new ClientError(401, 'invalid user login');
+      }
+      const { barberId, hashedPassword } = user;
+      return argon2
+        .verify(hashedPassword, password)
+        .then(isMatching => {
+          if (!isMatching) {
+            throw new ClientError(401, 'invalid hashed login');
+          }
+          const payload = { barberId, username };
+          const token = jwt.sign(payload, process.env.TOKEN_SECRET);
+          res.json({ token, user: payload });
+        });
+    })
+    .catch(err => next(err));
+});
+
 app.patch('/api/waitlist/:postId', (req, res) => {
   const postId = Number(req.params.postId);
   if (!Number.isInteger(postId) || postId < 1) {
@@ -135,63 +192,6 @@ app.delete('/api/waitlist/:postId', (req, res) => {
       console.error(error);
       res.status(500).json({ error: 'An unexpected error occurred' });
     });
-});
-
-app.post('/api/waitlist/sign-up', (req, res, next) => {
-  const { username, password } = req.body;
-  if (!username || !password) {
-    throw new ClientError(400, 'username and password are required fields');
-  }
-  argon2
-    .hash(password)
-    .then(hashedPassword => {
-      const sql = `
-        insert into "barber" ("username", "hashedPassword")
-        values ($1, $2)
-        returning "barberId", "username"
-      `;
-      const params = [username, hashedPassword];
-      return db.query(sql, params);
-    })
-    .then(result => {
-      const [user] = result.rows;
-      res.status(201).json(user);
-    })
-    .catch(err => next(err));
-});
-
-app.post('/api/waitlist/sign-in', (req, res, next) => {
-  const { username, password } = req.body;
-  if (!username || !password) {
-    throw new ClientError(401, 'invalid login');
-  }
-  const sql = `
-    select "barberId",
-           "hashedPassword"
-      from "barber"
-      where "username" = $1
-  `;
-
-  const params = [username];
-  db.query(sql, params)
-    .then(result => {
-      const [user] = result.rows;
-      if (!user) {
-        throw new ClientError(401, 'invalid user login');
-      }
-      const { barberId, hashedPassword } = user;
-      return argon2
-        .verify(hashedPassword, password)
-        .then(isMatching => {
-          if (!isMatching) {
-            throw new ClientError(401, 'invalid hashed login');
-          }
-          const payload = { barberId, username };
-          const token = jwt.sign(payload, process.env.TOKEN_SECRET);
-          res.json({ token, user: payload });
-        });
-    })
-    .catch(err => next(err));
 });
 
 app.use(errorMiddleware);

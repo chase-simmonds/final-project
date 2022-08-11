@@ -17,7 +17,7 @@ CREATE TABLE "barber" (
 
 CREATE TABLE "posts" (
 	"postId" serial NOT NULL,
-  "barberId" int NOT NULL,
+  "barberId" int NOT NULL DEFAULT 1,
 	"name" TEXT NOT NULL,
 	"phoneNumber" TEXT NOT NULL,
 	"barberName" TEXT NOT NULL,
