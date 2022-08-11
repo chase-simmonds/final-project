@@ -7,12 +7,27 @@
   padding-top: 2rem;
 }
 
+.hidden {
+  display: none !important;
+}
+
+.any-barber {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.proper-name {
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.phone-number {
+  font-size: 0.9rem;
+}
+
 .is-completed {
   background-color: rgb(168, 168, 168);
   text-decoration: line-through;
   color: gray;
-}
-
-.hidden {
-  display: none !important;
 }
